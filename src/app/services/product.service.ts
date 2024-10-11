@@ -15,7 +15,7 @@ export class ProductService {
   getAllProducts(): Observable<any[]> {
     return this.http.get<any[]>("https://freeapi.miniprojectideas.com/api/amazon/GetAllProducts");
   }
-  getAllProductsByCatgory(id: number): Observable<any[]> {
+  getAllProductsByCategory(id: number): Observable<any[]> {
     return this.http.get<any[]>("https://freeapi.miniprojectideas.com/api/amazon/GetAllProductsByCategoryId?id="+ id);
   }
 
