@@ -27,7 +27,7 @@ export class AppComponent {
   loggedObj: any = {};
   cartItems: any[]= [];
   loginModelClass: string = '';
-  // constructor(private productSrv: ProductService) {
+  constructor(private productSrv: ProductService) {
     // const localData = localStorage.getItem('amazon_user');
     // if(localData != null) {
     //   const parseObj = JSON.parse(localData);
@@ -44,7 +44,7 @@ export class AppComponent {
     //      this.loginModelClass = 'show';
     //   }
     // })
-  // }
+  }
 
   onRegister() {
     // this.productSrv.register(this.registerObj).subscribe((res: any)=> {

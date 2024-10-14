@@ -15,17 +15,23 @@ export class ProductsComponent implements OnInit {
   selectedCategory: number = 0;
   loggedObj: any = {};
 
-  // constructor(private productServ: ProductService) {
+  constructor(private productServ: ProductService) {
     // const localData = localStorage.getItem('amazon_user');
     // if(localData != null) {
     //   const parseObj =  JSON.parse(localData);
     //   this.loggedObj = parseObj;
     // }
-  // }
+  }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategory();
+    this.testAPI();
+  }
+  testAPI() {
+    this.productServ.testAPI().subscribe((Res: any) => {
+      console.log(Res);
+    })
   }
   
   loadProducts() {
@@ -84,7 +90,7 @@ export class ProductsComponent implements OnInit {
     //     }
     //   }) 
     // }
-    debugger;
+    alert("Product Added to Cart"); 
     
   }
 }

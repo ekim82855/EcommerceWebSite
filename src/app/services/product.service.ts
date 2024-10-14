@@ -46,4 +46,8 @@ export class ProductService {
   PlaceOrder(obj: any) : Observable<any> {
     return this.http.post<any>("https://freeapi.miniprojectideas.com/api/amazon/PlaceOrder", obj);
   }
+
+  testAPI() : Observable<any[]> {
+    return this.http.get<any[]>("https://localhost:7213/api/TodoItems");
+  }
 }
