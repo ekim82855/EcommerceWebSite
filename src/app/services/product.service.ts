@@ -48,6 +48,6 @@ export class ProductService {
   }
 
   testAPI() : Observable<any[]> {
-    return this.http.get<any[]>("https://localhost:7213/api/TodoItems");
+    return this.http.get<any[]>("https://localhost:7213/api/Orders");
   }
 }
