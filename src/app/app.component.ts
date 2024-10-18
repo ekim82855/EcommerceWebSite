@@ -52,6 +52,7 @@ export class AppComponent {
       console.log(this.registerObj);
       if(data.userID != null) {
         this.loggedObj = data;
+        this.loggedObj.name = "SOME NAME";
         alert("User Creation Done");
       } else {
         alert("ERROR");
