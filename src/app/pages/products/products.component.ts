@@ -26,47 +26,24 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategory();
-    this.testAPI();
-  }
-  testAPI() {
-    this.productServ.testAPI().subscribe((Res: any) => {
-      console.log(Res);
-    })
   }
   
   loadProducts() {
-    // this.productServ.getAllProducts().subscribe((Res: any) => {
-    //   this.productsArray = Res.data;
-    // })
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name", productPrice: 5.00, categoryId: 1});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 2", productPrice: 10.00, categoryId: 1});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 3", productPrice: 10.00, categoryId: 2});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 4", productPrice: 10.00, categoryId: 2});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 5", productPrice: 10.00, categoryId: 3});
+    this.productServ.getAllProducts().subscribe((data: any) => {
+      this.productsArray = data;
+    })
   }
 
   loadCategory() {
-    // this.productServ.getAllCategory().subscribe((Res: any) => {
-    //   this.productsArray = Res.data;
-    // })
-    this.categories.push({ categoryName: 'Category 1', categoryId: 1});
-    this.categories.push({ categoryName: 'Category 2', categoryId: 2});
-    this.categories.push({ categoryName: 'Category 3', categoryId: 3});
-    this.categories.push({ categoryName: 'Category 4', categoryId: 4});
+    this.productServ.getAllCategory().subscribe((data: any) => {
+      this.categories = data;
+    })
   }
 
   getAllProductsByCategory(categoryId: number) {
-    // this.productServ.getAllProductsByCategory(categoryId).subscribe((Res: any) => {
-    //   this.productsArray = Res.data;
-    // })
-    this.selectedCategory = categoryId;
-    this.productsArray = [];
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name", productPrice: 5.00, categoryId: 1});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 2", productPrice: 10.00, categoryId: 1});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 3", productPrice: 10.00, categoryId: 2});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 4", productPrice: 10.00, categoryId: 2});
-    this.productsArray.push({ productImageUrl: '', productShortName: "Some Name 5", productPrice: 10.00, categoryId: 3});
-    this.productsArray = this.productsArray.filter(i => i.categoryId == categoryId);
+    this.productServ.getAllProductsByCategory(categoryId).subscribe((data: any) => {
+      this.productsArray = data;
+    })
   }
 
   
