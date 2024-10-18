@@ -15,11 +15,11 @@ import { ProductService } from './services/product.service';
 export class AppComponent {
   title = 'EcommerceWebsite';
   registerObj: any = {
-    "CustId": 0,
-    "Name": "",
-    "MobileNo": "",
-    "Password": ""
-  }
+    "UserID": 1, 
+    "UserName": "",
+    "Password": "",
+    "ContactNumber": ""
+}
   loginObj: any = {
     "UserName": "",
     "UserPassword": ""
@@ -46,16 +46,17 @@ export class AppComponent {
     // })
   }
 
-  onRegister() {
-    // this.productSrv.register(this.registerObj).subscribe((res: any)=> {
-    //   if(res.result) {
-    //     this.loggedObj = res.data;
-    //     alert("User Creation Done")
-    //   } else {
-    //     alert(res.message)
-    //   }
-    // })
-    alert("User Creation Done");
+  registerUser() {
+    this.productSrv.register(this.registerObj).subscribe((data: any)=> {
+      //change later, API response return success status
+      console.log(this.registerObj);
+      if(data.userID != null) {
+        this.loggedObj = data;
+        alert("User Creation Done");
+      } else {
+        alert("ERROR");
+      }
+    })
   }
 
   onLogin() {

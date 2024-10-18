@@ -201,7 +201,7 @@
                 <div class="container">
                     <div class="row"> 
                         <div class="col-12 my-2">
-                            <input type="text" [(ngModel)]="registerObj.Name" class="form-control">
+                            <input type="text" [(ngModel)]="registerObj.UserName" class="form-control">
                             <label for="">Set Username</label>
                         </div>
                         <div class="col-12 my-2">
@@ -209,7 +209,7 @@
                             <label for="">Set Password</label>
                         </div> 
                         <div class="col-12 my-2">
-                            <input type="number" [(ngModel)]="registerObj.MobileNo" class="form-control">
+                            <input type="text" [(ngModel)]="registerObj.ContactNumber" class="form-control">
                             <label for="">Contact Number</label>
                         </div>  
                     </div>
@@ -217,7 +217,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="onRegister()">Register</button>
+                <button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
             </div>
         </div>
     </div>

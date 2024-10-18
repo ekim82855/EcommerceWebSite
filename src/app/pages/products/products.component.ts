@@ -35,17 +35,22 @@ export class ProductsComponent implements OnInit {
   }
 
   loadCategory() {
-    this.productServ.getAllCategory().subscribe((data: any) => {
+    this.productServ.getAllCategories().subscribe((data: any) => {
       this.categories = data;
     })
   }
 
-  getAllProductsByCategory(categoryId: number) {
-    this.productServ.getAllProductsByCategory(categoryId).subscribe((data: any) => {
-      this.productsArray = data;
-    })
+  getAllProductsByCategory(categoryID: number) {
+    if (this.selectedCategory == categoryID) {
+      this.selectedCategory = 0;
+      this.loadProducts();
+    } else {
+      this.productServ.getAllProductsByCategoryID(categoryID).subscribe((data: any) => {
+        this.productsArray = data;
+        this.selectedCategory = categoryID;
+      })
+    }
   }
-
   
   addToCart(productId: number) {
     // if(this.loggedObj.custId == undefined) {

@@ -15,16 +15,16 @@ export class ProductService {
   getAllProducts(): Observable<any[]> {
     return this.http.get<any[]>("https://localhost:7213/api/Product/GetAllProducts");
   }
-  getAllProductsByCategory(id: number): Observable<any[]> {
+  getAllProductsByCategoryID(id: number): Observable<any[]> {
     return this.http.get<any[]>("https://localhost:7213/api/Product/GetAllProductsByCategoryID?categoryID="+ id);
   }
 
-  getAllCategory(): Observable<any[]> {
+  getAllCategories(): Observable<any[]> {
     return this.http.get<any[]>("https://localhost:7213/api/Category/GetAllCategories");
   }
 
   register(obj: any) : Observable<any> {
-    return this.http.post<any>("https://freeapi.miniprojectideas.com/api/amazon/RegisterCustomer", obj);
+    return this.http.post<any>("https://localhost:7213/api/User/Register", obj);
   }
 
   login(obj: any) : Observable<any> {
