@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './services/product.service';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-root',
@@ -47,15 +48,19 @@ export class AppComponent {
   }
 
   registerUser() {
-    this.productSrv.register(this.registerObj).subscribe((data: any)=> {
-      //change later, API response return success status
-      console.log(this.registerObj);
-      if(data.userID != null) {
-        this.loggedObj = data;
-        this.loggedObj.name = "SOME NAME";
-        alert("User Creation Done");
-      } else {
-        alert("ERROR");
+    this.productSrv.register(this.registerObj).subscribe({
+      next: (data: any) => {
+        //change later, API response return success status
+        console.log(this.registerObj);
+        console.log(data);
+        if(data.userID != null) {
+          this.loggedObj = data;
+          this.loggedObj.name = data.UserName;
+          alert("User Creation Done");
+        }
+      },
+      error: (error: any) => {
+        alert(error.error.detail);
       }
     })
   }

@@ -9,22 +9,24 @@ export class ProductService {
   //$env:NODE_TLS_REJECT_UNAUTHORIZED=0 POWER SHELL ERROR
   cartUpdated: Subject<boolean> = new Subject<boolean>();
   showLogin: Subject<boolean> = new Subject<boolean>();
+  url: string = "localhost:7213";
+  // url: string = "momoflowersapi.azurewebsites.net";
 
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>("https://localhost:7213/api/Product/GetAllProducts");
+    return this.http.get<any[]>(`https://${this.url}/api/Product/GetAllProducts`);
   }
   getAllProductsByCategoryID(id: number): Observable<any[]> {
-    return this.http.get<any[]>("https://localhost:7213/api/Product/GetAllProductsByCategoryID?categoryID="+ id);
+    return this.http.get<any[]>(`https://${this.url}/api/Product/GetAllProductsByCategoryID?categoryID=${id}`);
   }
 
   getAllCategories(): Observable<any[]> {
-    return this.http.get<any[]>("https://localhost:7213/api/Category/GetAllCategories");
+    return this.http.get<any[]>(`https://${this.url}/api/Category/GetAllCategories`);
   }
 
   register(obj: any) : Observable<any> {
-    return this.http.post<any>("https://localhost:7213/api/User/Register", obj);
+    return this.http.post<any>(`https://${this.url}/api/User/Register`, obj);
   }
 
   login(obj: any) : Observable<any> {
