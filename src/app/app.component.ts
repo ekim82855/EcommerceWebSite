@@ -16,7 +16,7 @@ import { error } from 'node:console';
 export class AppComponent {
   title = 'EcommerceWebsite';
   registerObj: any = {
-    "UserID": 1, 
+    "UserID": 0, 
     "UserName": "",
     "Password": "",
     "ContactNumber": ""
